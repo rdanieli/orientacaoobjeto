@@ -24,8 +24,21 @@ public class Principal {
 		
 		Conta contaDestino = new Conta();
 		contaDestino.setPessoa(new Pessoa("João", "12545544"));
-		contaDestino.setSaldo(1000.0);
-		contaDestino.setNumero(2214);
+		contaDestino.setSaldo(0.0);
+		contaDestino.setNumero(1715);
+		
+		try {
+			Conta minhaContaClonada = (Conta) contaOrigem.clone();
+
+			System.out.println(contaOrigem.equals(minhaContaClonada));
+			System.out.println(contaDestino.equals(minhaContaClonada));
+			
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println();
 		
 		
 		Transferencia novaTransferencia = new Transferencia(1, contaOrigem, contaDestino, 100.0, "TEF");

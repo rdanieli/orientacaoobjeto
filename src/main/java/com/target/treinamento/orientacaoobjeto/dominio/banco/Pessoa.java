@@ -4,6 +4,10 @@ public class Pessoa {
 	private String nome;
 	private String rg;
 	
+	public Pessoa() {
+		
+	}
+	
 	public Pessoa(String nome, String rg) {
 		super();
 		this.nome = nome;
@@ -21,5 +25,11 @@ public class Pessoa {
 	}
 	public void setRg(String rg) {
 		this.rg = rg;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Pessoa novaPessoa = new Pessoa(this.nome, this.rg);
+		return novaPessoa;
 	}
 }
