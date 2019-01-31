@@ -1,6 +1,15 @@
 package com.target.treinamento.orientacaoobjeto.dominio.banco;
 
+import java.io.BufferedReader;
+import java.io.Closeable;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.target.treinamento.orientacaoobjeto.dominio.mamifero.Cartao;
@@ -26,6 +35,24 @@ public class Principal {
 		}
 		
 	}
+	
+	private void leiaArquivo() throws IOException {
+		InputStream inputStream = new FileInputStream("C:/users/rafael/arquivo.txt");
+		
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		
+		List<String> minhasLinhas = new ArrayList<String>();
+		
+		while(true) {
+			String linha = bufferedReader.readLine();
+			if(linha != null) {
+				minhasLinhas.add(linha);	
+			} else {
+				break;
+			}
+		}
+	}
+	
 	
 	public void meuMetodoComExcecaoChecado(Double value) throws FileNotFoundException {
 		throw new FileNotFoundException("Este arquivo não foi encontrado");
