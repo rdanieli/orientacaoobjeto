@@ -45,7 +45,35 @@ public class Principal {
 			transacao.setNomeCliente(linhaQuebrada[3]);
 			
 			
-			System.out.println(transacao);
+			transacaoes.add(transacao);
+		}
+		
+		processaTransacoes(transacaoes);
+	}
+
+	private void processaTransacoes(List<Transacao> transacaoes) {
+		
+		//interação sobre todas as transações
+		for (Transacao transacao : transacaoes) {
+			
+			//Utilizo o valueOf para obter o Enum, baseado no nome da bandeira
+			Taxas meuEnum = Taxas.valueOf(transacao.getBandeira().toUpperCase());
+			
+			//Obtenho o cartão selecionado baseado na informação do arquivo
+			Cartao cartao = meuEnum.getCartao();
+			
+			//Verifico qual a operação o usuário selecionou
+			if(transacao.getOperacao() == 1) {
+				
+				//Executo a chamada da interface débito, passando o valor
+				cartao.debito(transacao.getValor());
+				
+			} else if(transacao.getOperacao() == 2) {
+
+				//Executo a chamada da interface crédito, passando o valor
+				cartao.credito(transacao.getValor());
+				
+			}
 		}
 	}
 

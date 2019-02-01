@@ -7,7 +7,7 @@ import com.target.treinamento.orientacaoobjeto.dominio.mamifero.Visa;
 
 public enum Taxas {
 	VISA(1, "Visa", 0.05, 0.001, new Visa()),
-	MASTER_CARD(2, "Master Card", 0.1, 0.002, new Mastercard());
+	MASTER(2, "Master Card", 0.1, 0.002, new Mastercard());
 	
 	private Integer codigo;
 	private String nome;
@@ -47,6 +47,15 @@ public enum Taxas {
 	public static Taxas valueOf(Integer codigo) {
 		for(Taxas taxa : Taxas.values()) {
 			if(codigo.equals(taxa.getCodigo())) {
+				return taxa;
+			}
+		}
+		return null;
+	}
+	
+	public static Taxas getEnum(String nome) {
+		for(Taxas taxa : Taxas.values()) {
+			if(nome.equalsIgnoreCase(taxa.getNome())) {
 				return taxa;
 			}
 		}
