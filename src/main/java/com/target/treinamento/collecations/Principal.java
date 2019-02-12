@@ -1,11 +1,17 @@
 package com.target.treinamento.collecations;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.target.treinamento.orientacaoobjeto.dominio.banco.MeuDado;
+import com.target.treinamento.orientacaoobjeto.dominio.mamifero.Cartao;
+import com.target.treinamento.orientacaoobjeto.dominio.mamifero.Mastercard;
+import com.target.treinamento.orientacaoobjeto.dominio.mamifero.Visa;
 
 public class Principal {
 	
@@ -46,5 +52,37 @@ public class Principal {
 			System.out.print(elemento + ",");
 		}
 		
+		
+		List<MeuNovoDado<String>> dados = new ArrayList<MeuNovoDado<String>>();
+		
+		
+		
+		dados.add(new MeuNovoDado<String>());
+		
+		dados.get(0).comunica();
+//		for (Cartao cartao : dados) {
+//			cartao.credito(22.5);
+//		}
+		
+		
+		
+	}
+	
+	
+	public static class MeuNovoDado<T> extends MeuDado<T> implements Cartao {
+		
+		public void comunica() {
+			
+		}
+
+		public Double debito(Double valor) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Double credito(Double valor) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 }
