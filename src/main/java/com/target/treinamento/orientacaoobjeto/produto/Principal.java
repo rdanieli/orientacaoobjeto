@@ -3,6 +3,8 @@ package com.target.treinamento.orientacaoobjeto.produto;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.target.treinamento.orientacaoobjeto.produto.Fora.Dentro.MaisDentro.Dentro2;
+
 public class Principal {
 	public static void main(String[] args) {
 		
@@ -16,6 +18,10 @@ public class Principal {
 		System.out.println(String.format("%s -> %s", p1.getDescricao(), p1.getCodigo().getIdentificador()));
 		System.out.println(controleBusca.buscarPorCodigo("MILK001").getDescricao());
 		
+		
+		Fora fora = new Fora();
+		
+		new Fora.Dentro.MaisDentro();
 	}
 
 	private static List<Produto> criaListaDeProdutos() {

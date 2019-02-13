@@ -1,7 +1,7 @@
 package com.target.treinamento.orientacaoobjeto.dominio.banco;
 
 public class Pessoa {
-	private String nome;
+	public String nome;
 	private String rg;
 	
 	public Pessoa() {
