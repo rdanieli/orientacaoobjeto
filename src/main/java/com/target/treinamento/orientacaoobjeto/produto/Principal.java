@@ -30,34 +30,12 @@ public class Principal {
 		produtos.add(tcd);
 		produtos.add(banana);
 		produtos.add(leite);
-		
-		Codigo<Double> codigoParaBusca = new Codigo<Double>(854.51);
-//		Integer codigoParaBUscaInteiro = 5544;
-//		Double codigoParaBUscaDouble = 854.51;
-		
-		for (Produto produto : produtos) {
-			
-			if(produto.getCodigo()
-					.getIdentificador().equals(codigoParaBusca.getIdentificador())) {
 				
-				System.out.println("Achou o produto "+ produto.getDescricao());
-				
-			}
-			
-//			if(produto.getCodigoString().equals(codigoParaBusca)) {
-//				
-//				System.out.println("Achou o produto "+ produto.getDescricao());
-//				
-//			} else if (produto.getCodigoInteiro() != null && produto.getCodigoInteiro().equals(codigoParaBUscaInteiro)) {
-//				
-//				System.out.println("Achou o produto "+ produto.getDescricao());
-//				
-//			} else if (produto.getCodigoDouble() != null && produto.getCodigoDouble().equals(codigoParaBUscaDouble)) {
-//				
-//				System.out.println("Achou o produto "+ produto.getDescricao());
-//				
-//			}
-		}
+		ControleBusca controleBusca = new ControleBusca();
+		controleBusca.setProdutos(produtos);
+		System.out.println(controleBusca.buscarPorCodigo(854.51).getDescricao());
+		System.out.println(controleBusca.buscarPorCodigo(5544).getDescricao());
+		System.out.println(controleBusca.buscarPorCodigo("MILK001").getDescricao());
 		
 	}
 }
