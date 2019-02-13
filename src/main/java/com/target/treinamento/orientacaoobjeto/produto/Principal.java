@@ -6,6 +6,19 @@ import java.util.List;
 public class Principal {
 	public static void main(String[] args) {
 		
+		List<Produto> produtos = criaListaDeProdutos();
+				
+		ControleBusca controleBusca = new ControleBusca();
+		controleBusca.setProdutos(produtos);
+		Produto p = controleBusca.buscarPorCodigo(854.51);
+		Produto p1 = controleBusca.buscarPorCodigo(5544);
+		System.out.println(String.format("%s -> %s", p.getDescricao(), p.getCodigo().getIdentificador()));
+		System.out.println(String.format("%s -> %s", p1.getDescricao(), p1.getCodigo().getIdentificador()));
+		System.out.println(controleBusca.buscarPorCodigo("MILK001").getDescricao());
+		
+	}
+
+	private static List<Produto> criaListaDeProdutos() {
 		Produto tv = new Produto(new Codigo<String>("CKM001F19"), "TV", 5);
 		
 		Produto radio = new Produto(new Codigo<String>("CKI0018F"), "Radio", 2);
@@ -30,12 +43,6 @@ public class Principal {
 		produtos.add(tcd);
 		produtos.add(banana);
 		produtos.add(leite);
-				
-		ControleBusca controleBusca = new ControleBusca();
-		controleBusca.setProdutos(produtos);
-		System.out.println(controleBusca.buscarPorCodigo(854.51).getDescricao());
-		System.out.println(controleBusca.buscarPorCodigo(5544).getDescricao());
-		System.out.println(controleBusca.buscarPorCodigo("MILK001").getDescricao());
-		
+		return produtos;
 	}
 }
