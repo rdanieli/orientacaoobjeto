@@ -5,7 +5,7 @@ public class ControleBonificacao {
 	private Double totalEmBonificacoes = 0.0;
 	
 	public void registra(Funcionario funcionario) {
-		totalEmBonificacoes += funcionario.getBonificacao() * funcionario.getSalario();
+		totalEmBonificacoes += funcionario.getValorTotalFuncionarioComBonificacao();
 	}
 	
 	public Double getTotalEmBonificacoes() {

@@ -1,14 +1,17 @@
 package com.target.treinamento.orientacaoobjeto.abstracao;
 
-public class Funcionario {
+public abstract class Funcionario {
 	private Double bonificacao = 1.2;
-	private Double salario = 1000.0;
 	
+	//opcional a sobreescrita
 	public Double getBonificacao() {
 		return bonificacao;
 	}
-
-	public Double getSalario() {
-		return salario;
+	
+	//Obrigatório a implementação
+	public abstract Double getSalario();
+	
+	public Double getValorTotalFuncionarioComBonificacao() {
+		return getSalario() * getBonificacao();
 	}
 }	

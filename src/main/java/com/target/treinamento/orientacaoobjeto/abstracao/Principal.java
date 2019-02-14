@@ -11,6 +11,7 @@ public class Principal {
 	private void inicializa() {
 		
 		ControleBonificacao controleBonificacao = new ControleBonificacao();
+		controleBonificacao.registra(new Gerente());
 		
 	}
 }
