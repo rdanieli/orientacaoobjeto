@@ -1,18 +1,17 @@
 package com.target.treinamento.orientacaoobjeto.multiprocessamento;
 
+import com.target.treinamento.orientacaoobjeto.abstracao.Funcionario;
+
 public class Principal {
 	
 	class Dado {
-		public synchronized void exibir(String mensagem) {
-			System.out.print("["+mensagem);
-			
-			try {
-				Thread.sleep(1000);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-			
-			System.out.println("]");
+		int valor;
+		public Dado(int i) {
+			this.valor = i;
+		}
+
+		public void exibir(String mensagem) {
+			soma += valor;
 		}
 	}
 	
@@ -27,20 +26,55 @@ public class Principal {
 		}
 		
 		@Override
-		public void run() {			
-			dado.exibir(str);		
+		public void run() {
+			synchronized (dado) {
+				dado.exibir(str);
+			}		
 		}
 	}
 		
 	public static void main(String[] args) {
-		new Principal().inicializa();
+		new Principal().reflections();
 	}
 
+	int soma; 
+	
 	private void inicializa() {
-		Dado dado = new Dado();
+		ThreadExemplo t1 = new ThreadExemplo(new Dado(1), "Olá");
+		ThreadExemplo t2 = new ThreadExemplo(new Dado(2), "Meu");
+		ThreadExemplo t3 = new ThreadExemplo(new Dado(3), "Mundo");
+		ThreadExemplo t4 = new ThreadExemplo(new Dado(4), "Mundo");
+		ThreadExemplo t5 = new ThreadExemplo(new Dado(5), "Mundo");
 		
-		ThreadExemplo t1 = new ThreadExemplo(dado, "Olá");
-		ThreadExemplo t2 = new ThreadExemplo(dado, "Meu");
-		ThreadExemplo t3 = new ThreadExemplo(dado, "Mundo");
+		try {
+			t1.join();
+			t2.join();
+			t3.join();
+			t4.join();
+			t5.join();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(soma);
+	}
+	
+	private void reflections() {
+		try {
+			Funcionario funcionario = (Funcionario) Class.forName("com.target.treinamento.orientacaoobjeto.abstracao.Gerente").newInstance();
+			
+			System.out.println(funcionario);
+			
+			
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
